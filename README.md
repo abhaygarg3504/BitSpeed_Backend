@@ -119,17 +119,7 @@ Returns server and DB health status.
 
 ---
 
-## 🌐 Hosting on Render.com
-
-1. Push to GitHub
-2. Create a new **Web Service** on [render.com](https://render.com)
-3. Add a **PostgreSQL** database on Render
-4. Set environment variable: `DATABASE_URL`
-5. Set build command: `npm install && npm run db:migrate && npm run build`
-6. Set start command: `npm start`
-
----
 
 ## 🔗 Live Endpoint
 
-> https://your-app.onrender.com/identify
+> https://bitspeed-backend-zzi6.onrender.com/
