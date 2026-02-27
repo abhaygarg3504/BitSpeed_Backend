@@ -43,19 +43,29 @@ npm install
 ### 2. Setup Environment
 
 ```bash
-cp .env.example .env
+cp .env
 ```
 
 Edit `.env` and set your PostgreSQL connection string:
 
 ```
-DATABASE_URL="postgresql://USER:PASSWORD@HOST:5432/bitespeed_db?schema=public"
+# Server Port
 PORT=3000
+
+# Connect to Supabase via connection pooling (Transaction mode / port 6543 / pgbouncer=true)
+DATABASE_URL="postgresql://postgres.[YOUR-PROJECT-REF]:[YOUR-PASSWORD]@[aws-1-ap-south-1.pooler.supabase.com:6543/postgres?pgbouncer=true](https://aws-1-ap-south-1.pooler.supabase.com:6543/postgres?pgbouncer=true)"
+
+# Direct connection to the database. Used ONLY for migrations (Session mode / port 5432)
+DIRECT_URL="postgresql://postgres.[YOUR-PROJECT-REF]:[YOUR-PASSWORD]@[aws-1-ap-south-1.pooler.supabase.com:5432/postgres](https://aws-1-ap-south-1.pooler.supabase.com:5432/postgres)"
 ```
 
 ### 3. Run Database Migration
 
 ```bash
+# Generate Prisma Client
+npm run db:generate
+
+# Run Database Migrations (uses DIRECT_URL)
 npm run db:migrate
 ```
 
